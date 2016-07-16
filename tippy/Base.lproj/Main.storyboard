@@ -147,7 +147,7 @@
                                     <segment title="25%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="5FD-C1-554"/>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dic-1q-kBY"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="Wb6-nn-csV">
@@ -156,7 +156,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="wgj-uk-ax9"/>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="Uxk-uU-UP4"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -174,7 +174,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="billField" destination="Wb6-nn-csV" id="Lfi-tB-wgE"/>
+                        <outlet property="billField" destination="Wb6-nn-csV" id="kI4-lN-k8n"/>
                         <outlet property="tipControl" destination="dxr-lC-Qru" id="Xc6-4l-Irj"/>
                         <outlet property="tipLabel" destination="k57-Ka-a81" id="8oT-cI-AeF"/>
                         <outlet property="totalLabel" destination="EOd-wP-hSM" id="2I0-Vr-55G"/>

@@ -37,6 +37,11 @@ class ViewController: UIViewController {
         tipOptions = getTipOptions()
         setTipOptionsControl(tipOptions)
         calculateTipHelper()
+        
+        let savedBillAmount = getSavedBillAmount()
+        if (savedBillAmount != nil) {
+            billField.text = String(savedBillAmount!)
+        }
     }
     
     // Set the given tip options as the titles on the segmented 
@@ -58,7 +63,8 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", total)
     }
     
-    // Get the default tip index from standardUserDefaults
+    // Get the default tip index from standardUserDefaults and 
+    // set it on the segmented control
     func getDefaultTipIndex() {
         let defaults = NSUserDefaults.standardUserDefaults()
         let defaultIndex = defaults.integerForKey("defaultTipIndex")
@@ -76,6 +82,40 @@ class ViewController: UIViewController {
             return (storedOptions as! NSArray) as! Array<Double>
         }
     }
+    
+    // Get the current bill amount from the field and save it
+    private func saveBillAmount() {
+        let bill = Double(billField.text!) ?? 0
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setDouble(bill, forKey: "savedBillAmount")
+        defaults.setObject(NSDate(), forKey: "savedBillTime")
+    }
+    
+    private func getSavedBillAmount() -> Double? {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let savedBillAmount = defaults.doubleForKey("savedBillAmount")
+        let savedBillTimeObj = defaults.objectForKey("savedBillTime")
+        
+        if (savedBillTimeObj == nil) {
+            return nil
+        }
+        
+        let savedBillTime = savedBillTimeObj as! NSDate
+        
+        
+        // If there is no saved value, doubleForKey returns 0. In this
+        // case, return nil, since initializing the field to 0 would
+        // require backspacing to remove it
+        let noSavedValue = savedBillAmount == 0
+        let valueExpired = savedBillTime.timeIntervalSinceNow * -1 > 10 * 60
+        if (noSavedValue || valueExpired) {
+            return nil
+        } else {
+            return savedBillAmount
+        }
+
+        
+    }
 
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
@@ -83,6 +123,9 @@ class ViewController: UIViewController {
     
     @IBAction func calculateTip(sender: AnyObject) {
         calculateTipHelper()
+        // TODO: Probably unnecessary to save the bill amount when 
+        // the tip amount changes. Separate it into two actions
+        saveBillAmount()
     }
     
 }
