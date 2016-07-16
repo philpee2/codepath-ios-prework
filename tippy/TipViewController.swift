@@ -19,6 +19,8 @@ class TipViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setDefaultTipIndex()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +30,6 @@ class TipViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setDefaultTipIndex()
         setTipOptionsControl(SavedDataService.getTipOptions())
         
         let savedBillAmount = SavedDataService.getSavedBillAmount()
