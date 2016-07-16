@@ -9,17 +9,81 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // Cacheing here means that tip options only need to be 
+    // read from standardUserDefaults in viewDidAppear, insteaad
+    // of on every change to the bill
+    var tipOptions: Array<Double> = []
 
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        getDefaultTipIndex()
+        tipOptions = getTipOptions()
+        setTipOptionsControl(tipOptions)
+        calculateTipHelper()
+    }
+    
+    // Set the given tip options as the titles on the segmented 
+    // control
+    private func setTipOptionsControl(options: Array<Double>) {
+        for (index, option) in options.enumerate() {
+            let displayOption = Int(option * 100)
+            tipControl.setTitle("\(displayOption)%", forSegmentAtIndex: index)
+        }
+    }
+    
+    private func calculateTipHelper() {
+        let bill = Double(billField.text!) ?? 0
+        let tipPercent = tipOptions[tipControl.selectedSegmentIndex]
+        let tip = bill * tipPercent
+        let total = bill + tip
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    // Get the default tip index from standardUserDefaults
+    func getDefaultTipIndex() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaultIndex = defaults.integerForKey("defaultTipIndex")
+        tipControl.selectedSegmentIndex = defaultIndex
+    }
+    
+    // TODO: How to share code between View Controllers, so this method
+    // isn't repeated?
+    private func getTipOptions() -> Array<Double> {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let storedOptions = defaults.objectForKey("tipOptions")
+        if (storedOptions == nil) {
+            return [0.18, 0.2, 0.25]
+        } else {
+            return (storedOptions as! NSArray) as! Array<Double>
+        }
+    }
 
-
+    @IBAction func onTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func calculateTip(sender: AnyObject) {
+        calculateTipHelper()
+    }
+    
 }
 
