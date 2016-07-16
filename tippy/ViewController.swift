@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         if (savedBillAmount != nil) {
             billField.text = String(savedBillAmount!)
         }
+        billField.becomeFirstResponder()
     }
     
     // Set the given tip options as the titles on the segmented 
