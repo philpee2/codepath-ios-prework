@@ -20,35 +20,14 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let defaultIndex = defaults.integerForKey("defaultTipIndex")
-        defaultTipControl.selectedSegmentIndex = defaultIndex
+        defaultTipControl.selectedSegmentIndex = SavedDataService.getDefaultTipIndex()
         
         let tipFields = [lowTipField, midTipField, highTipField]
-        for (index, option) in getTipOptions().enumerate() {
+        for (index, option) in SavedDataService.getTipOptions().enumerate() {
             let displayOption = Int(option * 100)
             defaultTipControl.setTitle("\(displayOption)%", forSegmentAtIndex: index)
             tipFields[index].text = "\(displayOption)"
         }
-    }
-    
-    // Read and return the tip options from standardUserDefaults
-    private func getTipOptions() -> Array<Double> {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let tipOptions = defaults.objectForKey("tipOptions")
-        if (tipOptions == nil) {
-            return [0.18, 0.2, 0.25]
-        } else {
-            return (tipOptions as! NSArray) as! Array<Double>
-        }
-    }
-    
-    // Set the given tip options to standardUserDefaults
-    private func setTipOptions(options: Array<Double>) {
-        print(options)
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(options, forKey: "tipOptions")
-        defaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,21 +48,19 @@ class SettingsViewController: UIViewController {
     
     // Set the segmented control's value to be the default tip index
     @IBAction func setDefaultTip(sender: AnyObject) {
-        let defaults = NSUserDefaults.standardUserDefaults()
         let selectedIndex = defaultTipControl.selectedSegmentIndex
-        defaults.setInteger(selectedIndex, forKey: "defaultTipIndex")
-        defaults.synchronize()
+        SavedDataService.setDefaultTipIndex(selectedIndex)
     }
     
     // Read the stored tip options, update one of them to the new value, 
     // and set it back. Also update the default tip control
     private func changeTipOption(index: Int, newValue: String) {
-        var tipOptions = getTipOptions()
+        var tipOptions = SavedDataService.getTipOptions()
         let normalizedNewValue = newValue.isEmpty ? "0" : newValue
         let enteredInt = Int(normalizedNewValue)! ?? 0
         let enteredPercent = Double(enteredInt) / 100
         tipOptions[index] = enteredPercent
-        setTipOptions(tipOptions)
+        SavedDataService.setTipOptions(tipOptions)
         defaultTipControl.setTitle("\(enteredInt)%", forSegmentAtIndex: index)
     }
     

@@ -15,6 +15,7 @@
 		047CFDA51D3A9BB000B2D9B8 /* tippyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CFDA41D3A9BB000B2D9B8 /* tippyTests.swift */; };
 		047CFDB01D3A9BB000B2D9B8 /* tippyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CFDAF1D3A9BB000B2D9B8 /* tippyUITests.swift */; };
 		047CFDBE1D3AA5F100B2D9B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CFDBD1D3AA5F100B2D9B8 /* SettingsViewController.swift */; };
+		047CFDC01D3ADA2300B2D9B8 /* SavedDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CFDBF1D3ADA2300B2D9B8 /* SavedDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		047CFDAF1D3A9BB000B2D9B8 /* tippyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tippyUITests.swift; sourceTree = "<group>"; };
 		047CFDB11D3A9BB000B2D9B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047CFDBD1D3AA5F100B2D9B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		047CFDBF1D3ADA2300B2D9B8 /* SavedDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				047CFD961D3A9BB000B2D9B8 /* Assets.xcassets */,
 				047CFD981D3A9BB000B2D9B8 /* LaunchScreen.storyboard */,
 				047CFD9B1D3A9BB000B2D9B8 /* Info.plist */,
+				047CFDBF1D3ADA2300B2D9B8 /* SavedDataService.swift */,
 			);
 			path = tippy;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				047CFD921D3A9BB000B2D9B8 /* ViewController.swift in Sources */,
 				047CFD901D3A9BB000B2D9B8 /* AppDelegate.swift in Sources */,
 				047CFDBE1D3AA5F100B2D9B8 /* SettingsViewController.swift in Sources */,
+				047CFDC01D3ADA2300B2D9B8 /* SavedDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

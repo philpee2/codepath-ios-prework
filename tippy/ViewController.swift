@@ -28,11 +28,11 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        getDefaultTipIndex()
-        setTipOptionsControl(getTipOptions())
+        setDefaultTipIndex()
+        setTipOptionsControl(SavedDataService.getTipOptions())
         calculateTipHelper()
         
-        let savedBillAmount = getSavedBillAmount()
+        let savedBillAmount = SavedDataService.getSavedBillAmount()
         if (savedBillAmount != nil) {
             billField.text = String(savedBillAmount!)
         }
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
     private func calculateTipHelper() {
         let bill = Double(billField.text!) ?? 0
-        let tipPercent = getTipOptions()[tipControl.selectedSegmentIndex]
+        let tipPercent = SavedDataService.getTipOptions()[tipControl.selectedSegmentIndex]
         let tip = bill * tipPercent
         let total = bill + tip
         
@@ -58,58 +58,10 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", total)
     }
     
-    // Get the default tip index from standardUserDefaults and 
+    // Get the default tip index from SavedDataService and
     // set it on the segmented control
-    func getDefaultTipIndex() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let defaultIndex = defaults.integerForKey("defaultTipIndex")
-        tipControl.selectedSegmentIndex = defaultIndex
-    }
-    
-    // TODO: How to share code between View Controllers, so this method
-    // isn't repeated?
-    private func getTipOptions() -> Array<Double> {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let storedOptions = defaults.objectForKey("tipOptions")
-        if (storedOptions == nil) {
-            return [0.18, 0.2, 0.25]
-        } else {
-            return (storedOptions as! NSArray) as! Array<Double>
-        }
-    }
-    
-    // Get the current bill amount from the field and save it
-    private func saveBillAmount() {
-        let bill = Double(billField.text!) ?? 0
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setDouble(bill, forKey: "savedBillAmount")
-        defaults.setObject(NSDate(), forKey: "savedBillTime")
-    }
-    
-    private func getSavedBillAmount() -> Double? {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let savedBillAmount = defaults.doubleForKey("savedBillAmount")
-        let savedBillTimeObj = defaults.objectForKey("savedBillTime")
-        
-        if (savedBillTimeObj == nil) {
-            return nil
-        }
-        
-        let savedBillTime = savedBillTimeObj as! NSDate
-        
-        
-        // If there is no saved value, doubleForKey returns 0. In this
-        // case, return nil, since initializing the field to 0 would
-        // require backspacing to remove it
-        let noSavedValue = savedBillAmount == 0
-        let valueExpired = savedBillTime.timeIntervalSinceNow * -1 > 10 * 60
-        if (noSavedValue || valueExpired) {
-            return nil
-        } else {
-            return savedBillAmount
-        }
-
-        
+    func setDefaultTipIndex() {
+        tipControl.selectedSegmentIndex = SavedDataService.getDefaultTipIndex()
     }
 
     @IBAction func onTap(sender: AnyObject) {
@@ -120,7 +72,7 @@ class ViewController: UIViewController {
         calculateTipHelper()
         // TODO: Probably unnecessary to save the bill amount when 
         // the tip amount changes. Separate it into two actions
-        saveBillAmount()
+        SavedDataService.setSavedBillAmount(billField.text!)
     }
     
 }
