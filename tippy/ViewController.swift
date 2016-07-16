@@ -9,11 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    // Cacheing here means that tip options only need to be 
-    // read from standardUserDefaults in viewDidAppear, insteaad
-    // of on every change to the bill
-    var tipOptions: Array<Double> = []
 
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -34,8 +29,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         getDefaultTipIndex()
-        tipOptions = getTipOptions()
-        setTipOptionsControl(tipOptions)
+        setTipOptionsControl(getTipOptions())
         calculateTipHelper()
         
         let savedBillAmount = getSavedBillAmount()
@@ -56,7 +50,7 @@ class ViewController: UIViewController {
     
     private func calculateTipHelper() {
         let bill = Double(billField.text!) ?? 0
-        let tipPercent = tipOptions[tipControl.selectedSegmentIndex]
+        let tipPercent = getTipOptions()[tipControl.selectedSegmentIndex]
         let tip = bill * tipPercent
         let total = bill + tip
         
