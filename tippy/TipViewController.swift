@@ -30,12 +30,12 @@ class TipViewController: UIViewController {
         super.viewWillAppear(animated)
         setDefaultTipIndex()
         setTipOptionsControl(SavedDataService.getTipOptions())
-        calculateTipHelper()
         
         let savedBillAmount = SavedDataService.getSavedBillAmount()
         if (savedBillAmount != nil) {
             billField.text = String(savedBillAmount!)
         }
+        calculateTipHelper()
         billField.becomeFirstResponder()
     }
     
