@@ -29,6 +29,10 @@ class SettingsViewController: UIViewController {
             tipFields[index].text = "\(displayOption)"
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        lowTipField.becomeFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

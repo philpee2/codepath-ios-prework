@@ -14,6 +14,7 @@ class TipViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var tipDetailsContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,9 @@ class TipViewController: UIViewController {
             billField.text = String(savedBillAmount!)
         }
         calculateTipHelper()
+        if (billField.text!.isEmpty) {
+            hideTipDetails()
+        }
         billField.becomeFirstResponder()
     }
     
@@ -64,6 +68,16 @@ class TipViewController: UIViewController {
     func setDefaultTipIndex() {
         tipControl.selectedSegmentIndex = SavedDataService.getDefaultTipIndex()
     }
+    
+    // TODO: Figure out how to do this without
+    // magic hardcoded numbers
+    private func showTipDetails() {
+        tipDetailsContainer.frame = CGRectMake(0.0, 129.0, 320.0, 161.0)
+    }
+    
+    private func hideTipDetails() {
+        tipDetailsContainer.frame = CGRectMake(0.0, 290, 320.0, 0)
+    }
 
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
@@ -73,7 +87,16 @@ class TipViewController: UIViewController {
         calculateTipHelper()
         // TODO: Probably unnecessary to save the bill amount when 
         // the tip amount changes. Separate it into two actions
-        SavedDataService.setSavedBillAmount(billField.text!)
+        let billValue = billField.text ?? ""
+        SavedDataService.setSavedBillAmount(billValue)
+        print(tipDetailsContainer.frame)
+        UIView.animateWithDuration(0.2, animations: {
+            if (billValue.isEmpty) {
+                self.hideTipDetails()
+            } else {
+                self.showTipDetails()
+            }
+        })
     }
     
 }
