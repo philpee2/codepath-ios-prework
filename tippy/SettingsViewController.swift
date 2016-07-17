@@ -38,8 +38,9 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         lowTipField.becomeFirstResponder()
-        setIsLightSwitch()
-        updateColors(SavedDataService.getIsLight())
+        let isLight = SavedDataService.getIsLight()
+        isLightSwitch.on = isLight
+        updateColors(isLight)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +59,6 @@ class SettingsViewController: UIViewController {
     }
     */
     
-    // Set the segmented control's value to be the default tip index
     @IBAction func setDefaultTip(sender: AnyObject) {
         let selectedIndex = defaultTipControl.selectedSegmentIndex
         SavedDataService.setDefaultTipIndex(selectedIndex)
@@ -74,10 +74,6 @@ class SettingsViewController: UIViewController {
         tipOptions[index] = enteredPercent
         SavedDataService.setTipOptions(tipOptions)
         defaultTipControl.setTitle("\(enteredInt)%", forSegmentAtIndex: index)
-    }
-    
-    private func setIsLightSwitch() {
-        isLightSwitch.on = SavedDataService.getIsLight()
     }
     
     // Update the colors on the page according to whether the 

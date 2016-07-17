@@ -24,7 +24,6 @@ class TipViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         setDefaultTipIndex()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +73,6 @@ class TipViewController: UIViewController {
         tipControl.tintColor = textColor
         tipDetailsContainer.backgroundColor = tipBackgroundColor
         mainView.backgroundColor = mainBackgroundColor
-        
     }
     
     // Convert the given string to a formatted price string according
@@ -107,12 +105,11 @@ class TipViewController: UIViewController {
 
         tipLabel.text = formatPriceDoubleToString(tip)
         totalLabel.text = formatPriceDoubleToString(total)
-
     }
     
     // Get the default tip index from SavedDataService and
     // set it on the segmented control
-    func setDefaultTipIndex() {
+    private func setDefaultTipIndex() {
         tipControl.selectedSegmentIndex = SavedDataService.getDefaultTipIndex()
     }
     
