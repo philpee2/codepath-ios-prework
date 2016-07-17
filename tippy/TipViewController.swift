@@ -104,9 +104,7 @@ class TipViewController: UIViewController {
         let tipPercent = SavedDataService.getTipOptions()[tipControl.selectedSegmentIndex]
         let tip = bill * tipPercent
         let total = bill + tip
-        
-//        tipLabel.text = String(format: "$%.2f", tip)
-//        totalLabel.text = String(format: "$%.2f", total)
+
         tipLabel.text = formatPriceDoubleToString(tip)
         totalLabel.text = formatPriceDoubleToString(total)
 
