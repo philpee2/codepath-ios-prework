@@ -31,7 +31,7 @@ GIF created with LiceCap.
 
 ## Notes
 
-- For some reason, view.endEditing(true) on the settings page would crash the app, so I left it commented out
+- For some reason, `view.endEditing(true)` on the settings page would crash the app, so I left it commented out
 
 ## License
 
