@@ -14,6 +14,12 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lowTipField: UITextField!
     @IBOutlet weak var midTipField: UITextField!
     @IBOutlet weak var highTipField: UITextField!
+    @IBOutlet weak var isLightSwitch: UISwitch!
+    @IBOutlet weak var tipOptionsLabel: UILabel!
+    @IBOutlet weak var defaultPercentageLabel: UILabel!
+    @IBOutlet weak var lightThemeLabel: UILabel!
+    @IBOutlet weak var mainView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +38,8 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         lowTipField.becomeFirstResponder()
+        setIsLightSwitch()
+        updateColors(SavedDataService.getIsLight())
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +76,28 @@ class SettingsViewController: UIViewController {
         defaultTipControl.setTitle("\(enteredInt)%", forSegmentAtIndex: index)
     }
     
+    private func setIsLightSwitch() {
+        isLightSwitch.on = SavedDataService.getIsLight()
+    }
+    
+    // Update the colors on the page according to whether the 
+    // light theme has been selected
+    private func updateColors(isLight: Bool) {
+        let labels = [
+            tipOptionsLabel,
+            defaultPercentageLabel,
+            lightThemeLabel,
+        ]
+        
+        let labelColor = isLight ? Colors.darkBlue : Colors.white
+        let backgroundColor = isLight ? Colors.white : Colors.darkBlue
+        for label in labels {
+            label.textColor = labelColor
+        }
+        mainView.backgroundColor = backgroundColor
+        defaultTipControl.tintColor = labelColor
+    }
+    
     // TODO: Enforce that the entered values are in the correct order
     // (ie low is less than mid, which is less than high), or re-order 
     // them as needed
@@ -85,5 +115,10 @@ class SettingsViewController: UIViewController {
     @IBAction func onTap(sender: AnyObject) {
         // TODO: Why does this break?
         // view.endEditing(true)
+    }
+    @IBAction func isLightSwitchChanged(sender: AnyObject) {
+        SavedDataService.setIsLight(isLightSwitch.on)
+        updateColors(isLightSwitch.on)
+        
     }
 }

@@ -18,14 +18,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Afz-yH-l1i">
-                                        <rect key="frame" x="20" y="41" width="280" height="36"/>
+                                        <rect key="frame" x="20" y="13" width="280" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rfx-Cj-YuK">
-                                        <rect key="frame" x="18" y="204" width="285" height="29"/>
+                                        <rect key="frame" x="18" y="159" width="285" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="18%"/>
@@ -37,14 +37,14 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default percentage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TPq-md-7Vp">
-                                        <rect key="frame" x="18" y="145" width="285" height="51"/>
+                                        <rect key="frame" x="18" y="100" width="285" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Alu-WN-esW">
-                                        <rect key="frame" x="124" y="85" width="73" height="30"/>
+                                        <rect key="frame" x="124" y="57" width="73" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="6hb-tP-ALZ">
-                                        <rect key="frame" x="230" y="85" width="73" height="30"/>
+                                        <rect key="frame" x="230" y="57" width="73" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -62,7 +62,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="JNH-sY-CGe">
-                                        <rect key="frame" x="18" y="85" width="73" height="30"/>
+                                        <rect key="frame" x="18" y="57" width="73" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -70,6 +70,20 @@
                                             <action selector="onLowTipChanged:" destination="ss8-ae-c2Y" eventType="editingChanged" id="9gj-Yc-Xhz"/>
                                         </connections>
                                     </textField>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="W1h-wz-jcL">
+                                        <rect key="frame" x="136" y="248" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="isLightSwitchChanged:" destination="ss8-ae-c2Y" eventType="valueChanged" id="6YK-JI-umr"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f3U-zw-Css">
+                                        <rect key="frame" x="18" y="200" width="285" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.22122054399999999" green="0.49922936210000002" blue="0.67647660340000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -83,10 +97,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Rtp-Pg-SiF"/>
                     <connections>
+                        <outlet property="defaultPercentageLabel" destination="TPq-md-7Vp" id="6pv-Dq-s9l"/>
                         <outlet property="defaultTipControl" destination="rfx-Cj-YuK" id="F8b-KV-rAn"/>
                         <outlet property="highTipField" destination="6hb-tP-ALZ" id="Yaj-gx-3t0"/>
+                        <outlet property="isLightSwitch" destination="W1h-wz-jcL" id="7g1-nU-wLv"/>
+                        <outlet property="lightThemeLabel" destination="f3U-zw-Css" id="euQ-vZ-wlz"/>
                         <outlet property="lowTipField" destination="JNH-sY-CGe" id="FDh-OB-uQm"/>
+                        <outlet property="mainView" destination="bSv-1X-9Tv" id="wOo-rR-3GP"/>
                         <outlet property="midTipField" destination="Alu-WN-esW" id="mQs-cv-UuG"/>
+                        <outlet property="tipOptionsLabel" destination="Afz-yH-l1i" id="c0l-Vg-sVS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIy-b5-DfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,18 +154,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="1H8-dW-WeI">
-                                        <rect key="frame" x="22" y="105" width="277" height="2"/>
+                                        <rect key="frame" x="22" y="107" width="277" height="2"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.5"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EOd-wP-hSM">
-                                        <rect key="frame" x="22" y="107" width="277" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="47"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="dxr-lC-Qru">
                                         <rect key="frame" x="7" y="27" width="305" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,9 +172,16 @@
                                             <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dic-1q-kBY"/>
                                         </connections>
                                     </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EOd-wP-hSM">
+                                        <rect key="frame" x="22" y="107" width="277" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="47"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.32086913379999998" green="0.77912242480000005" blue="1" alpha="0.3452737145" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.32086913379999998" green="0.77912242480000005" blue="1" alpha="0.53673537234042556" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.26485061074419042" green="0.61956350109975566" blue="0.80883916884816753" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.22122054403877087" green="0.49922936207430341" blue="0.67647660340314131" alpha="1" colorSpace="calibratedRGB"/>
@@ -181,6 +200,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="Wb6-nn-csV" id="kI4-lN-k8n"/>
+                        <outlet property="divider" destination="1H8-dW-WeI" id="9a7-30-9Sx"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="VV1-OC-Ki0"/>
+                        <outlet property="plusSign" destination="ZVC-t8-e8f" id="boh-WA-mtg"/>
                         <outlet property="tipControl" destination="dxr-lC-Qru" id="Xc6-4l-Irj"/>
                         <outlet property="tipDetailsContainer" destination="CVs-Zw-Rj4" id="OLL-54-azK"/>
                         <outlet property="tipLabel" destination="k57-Ka-a81" id="8oT-cI-AeF"/>

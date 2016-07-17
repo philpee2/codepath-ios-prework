@@ -15,6 +15,9 @@ class TipViewController: UIViewController {
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var tipDetailsContainer: UIView!
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var plusSign: UILabel!
+    @IBOutlet weak var divider: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ class TipViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setTipOptionsControl(SavedDataService.getTipOptions())
-        
+        updateColors(SavedDataService.getIsLight())
         let savedBillAmount = SavedDataService.getSavedBillAmount()
         if (savedBillAmount != nil) {
             billField.text = String(savedBillAmount!)
@@ -51,6 +54,27 @@ class TipViewController: UIViewController {
             let displayOption = Int(option * 100)
             tipControl.setTitle("\(displayOption)%", forSegmentAtIndex: index)
         }
+    }
+    
+    // Update the colors on the page according to whether the
+    // light theme has been selected
+    private func updateColors(isLight: Bool) {
+        let textColor = isLight ? Colors.lightBlue : Colors.white
+        let tipBackgroundColor = isLight ? Colors.white : Colors.lightBlue
+        let mainBackgroundColor = isLight ? Colors.lightBlue : Colors.darkBlue
+        let labels = [
+            tipLabel,
+            plusSign,
+            totalLabel
+        ]
+        for label in labels {
+            label.textColor = textColor
+        }
+        divider.backgroundColor = textColor
+        tipControl.tintColor = textColor
+        tipDetailsContainer.backgroundColor = tipBackgroundColor
+        mainView.backgroundColor = mainBackgroundColor
+        
     }
     
     // Convert the given string to a formatted price string according

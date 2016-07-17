@@ -73,6 +73,19 @@ class SavedDataService: NSObject {
         let defaults = SavedDataService.getUserDefaults()
         defaults.setDouble(bill, forKey: "savedBillAmount")
         defaults.setObject(NSDate(), forKey: "savedBillTime")
+        defaults.synchronize()
+    }
+    
+    static func getIsLight() -> Bool {
+        let defaults = SavedDataService.getUserDefaults()
+        // False, or dark, by default
+        return defaults.boolForKey("savedIsLight")
+    }
+    
+    static func setIsLight(isLight: Bool) {
+        let defaults = SavedDataService.getUserDefaults()
+        defaults.setBool(isLight, forKey: "savedIsLight")
+        defaults.synchronize()
     }
     
 }
