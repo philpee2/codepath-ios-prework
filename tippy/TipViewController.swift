@@ -53,14 +53,39 @@ class TipViewController: UIViewController {
         }
     }
     
+    // Convert the given string to a formatted price string according
+    // to current locale
+    private func formatPriceStringToString(price: String?) -> String {
+        let priceNumber = formatPriceStringToDouble(price)
+        // Copied from http://stackoverflow.com/questions/24960621/struggling-with-nsnumberformatter-in-swift-for-currency
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        return formatter.stringFromNumber(priceNumber) ?? "0"
+    }
+    
+    // Convert the given string to a parsed double
+    private func formatPriceStringToDouble(price: String?) -> Double {
+        return Double(price!) ?? 0
+    }
+    
+    // Convert the given double to a formatted string according to 
+    // current locale
+    private func formatPriceDoubleToString(price: Double) -> String {
+        // TODO: This seems like a pretty roundabout way to accomplish this
+        return formatPriceStringToString(String(price))
+    }
+    
     private func calculateTipHelper() {
-        let bill = Double(billField.text!) ?? 0
+        let bill = formatPriceStringToDouble(billField.text)
         let tipPercent = SavedDataService.getTipOptions()[tipControl.selectedSegmentIndex]
         let tip = bill * tipPercent
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+//        tipLabel.text = String(format: "$%.2f", tip)
+//        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = formatPriceDoubleToString(tip)
+        totalLabel.text = formatPriceDoubleToString(total)
+
     }
     
     // Get the default tip index from SavedDataService and
