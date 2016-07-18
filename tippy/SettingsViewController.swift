@@ -108,13 +108,14 @@ class SettingsViewController: UIViewController {
     @IBAction func onHighTipChanged(sender: AnyObject) {
         changeTipOption(2, newValue: highTipField.text!)
     }
+    
     @IBAction func onTap(sender: AnyObject) {
         // TODO: Why does this break?
         // view.endEditing(true)
     }
+    
     @IBAction func isLightSwitchChanged(sender: AnyObject) {
         SavedDataService.setIsLight(isLightSwitch.on)
         updateColors(isLightSwitch.on)
-        
     }
 }
