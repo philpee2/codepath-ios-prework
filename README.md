@@ -30,11 +30,20 @@ Here's a walkthrough of implemented user stories:
 ### Main screen
 <img src='http://g.recordit.co/WjIGhUzGBi.gif' title='Main screen' width='' alt='Main screen' />
 
-## Save default tip
+### Save default tip
 <img src='http://g.recordit.co/uPLsOfBo2b.gif' title='Save default tip' width='' alt='Save default tip' />
 
-## Save bill amount
+### Save bill amount
 <img src='http://g.recordit.co/qjY2Uq2gLj.gif' title='Save bill amount' width='' alt='Save bill amount' />
+
+### Different locale
+<img src='http://g.recordit.co/HqJulEIbUA.gif' title='Different locale' width='' alt='Different locale' />
+
+### Change tip options
+<img src='http://g.recordit.co/T9uVR7jT3k.gif' title='Change tip options' width='' alt='Change tip options' />
+
+### Light/dark theme
+<img src='http://g.recordit.co/XSdFGzsf8E.gif' title='Light/dark theme' width='' alt='Light/dark theme' />
 
 GIF created with RecordIt.
 
