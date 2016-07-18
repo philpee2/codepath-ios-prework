@@ -27,7 +27,16 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-GIF created with LiceCap.
+### Main screen
+<img src='http://g.recordit.co/WjIGhUzGBi.gif' title='Main screen' width='' alt='Main screen' />
+
+## Save default tip
+<img src='http://g.recordit.co/uPLsOfBo2b.gif' title='Save default tip' width='' alt='Save default tip' />
+
+## Save bill amount
+<img src='http://g.recordit.co/qjY2Uq2gLj.gif' title='Save bill amount' width='' alt='Save bill amount' />
+
+GIF created with RecordIt.
 
 ## Notes
 
