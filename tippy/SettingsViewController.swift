@@ -110,8 +110,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func onTap(sender: AnyObject) {
-        // TODO: Why does this break?
-        // view.endEditing(true)
+         view.endEditing(true)
     }
     
     @IBAction func isLightSwitchChanged(sender: AnyObject) {
