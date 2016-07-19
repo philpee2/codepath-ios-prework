@@ -49,8 +49,6 @@ GIF created with RecordIt.
 
 ## Notes
 
-- For some reason, `view.endEditing(true)` on the settings page would crash the app, so I left it commented out
-
 ## License
 
     Copyright [2016] [Phil Nachum]
